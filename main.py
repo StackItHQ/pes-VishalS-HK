@@ -272,7 +272,7 @@ def sync_sheet_to_db(sheet_data, db_connection):
             delete_db_row(db_connection, db_srn)
 
 def sync_db_to_sheet(db_data, sheets_service):
-    rows_to_update = [['SRN', 'Name', 'Semester', 'Department']]  # Header row
+    rows_to_update = [['SRN', 'Name', 'Semester', 'Department']] 
     for row in db_data:
         rows_to_update.append(list(row))
 
@@ -315,8 +315,8 @@ def main():
             print("Synchronization completed.")
             time.sleep(30)  # A wait time of 30 seconds before every sunc
 
-    except KeyboardInterrupt:
-        print("Synchronization stopped by user.")
+    except KeyboardInterrupt as err:
+        print(f"{err}")
     finally:
         if db_connection.is_connected():
             db_connection.close()
